@@ -2,6 +2,7 @@
 // import jwt from "koa-jwt"
 // const JWT = require('koa-jwt')
 const JWT = require('jsonwebtoken')
+const path = require('path')
 const { find, insertOne } = require("../cure")
 
 // 添加用户
@@ -36,12 +37,21 @@ const getUser = async function (ctx, next) {
     
 }
 
-// 查询分页
-const findpage = async function (ctx, next) {
-    console.log(156461444156)
+const copmeImg = async function (ctx, next) {
+    // console.log(ctx.request.files.file)
+    const {file} = ctx.request.files
     ctx.body = {
                 status: 200,
-                msg: '登录成功1111'
+                Filesl: '登录成功6666'
+    }
+}
+// 查询分页
+const findpage = async function (ctx, next) {
+    // console.log(156461444156)
+    ctx.body = {
+                status: 200,
+                msg: '登录成功1111',
+                data: []
     }
     // const resdata = await find(ctx.request.body, ctx, next)
     // if (resdata.length > 0) {
@@ -63,5 +73,6 @@ const findpage = async function (ctx, next) {
 module.exports = {
     getUser,
     addUser,
-    findpage
+    findpage,
+    copmeImg
 }

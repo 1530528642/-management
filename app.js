@@ -1,21 +1,31 @@
 const Koa = require('koa')
+const path = require('path')
 const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
-const bodyparser = require('koa-bodyparser')
+// const bodyparser = require('koa-bodyparser')
+const koaBody = require('koa-body')
 const logger = require('koa-logger')
 
-const index = require('./routes/index')
-const users = require('./routes/users')
-const serchpage = require('./routes/serchpage')
+const routerly = require('./routes/index')
+// const router = require('./routes/serchpage')
+// const users = require('./routes/users')
+// const serchpage = require('./routes/serchpage')
 
 // error handler
 onerror(app)
 
 // middlewares
-app.use(bodyparser({
-  enableTypes:['json', 'form', 'text']
+// app.use(bodyparser({
+//   enableTypes:['json', 'form', 'text']
+// }))
+app.use(koaBody({
+  multipart: true,
+  formidable: {
+    keepExtensions: true,
+    uploadDir: path.join(__dirname, './uploads')
+  }
 }))
 app.use(json())
 app.use(logger())
@@ -34,9 +44,10 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
-app.use(serchpage.routes(), serchpage.allowedMethods())
+app.use(routerly.routes(), routerly.allowedMethods())
+// app.use(index.routes(), index.allowedMethods())
+// app.use(users.routes(), users.allowedMethods())
+// app.use(serchpage.routes(), serchpage.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
