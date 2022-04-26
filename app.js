@@ -7,7 +7,7 @@ const onerror = require('koa-onerror')
 // const bodyparser = require('koa-bodyparser')
 const koaBody = require('koa-body')
 const logger = require('koa-logger')
-
+const koaStatic = require('koa-static')
 const routerly = require('./routes/index')
 // const router = require('./routes/serchpage')
 // const users = require('./routes/users')
@@ -27,6 +27,8 @@ app.use(koaBody({
     uploadDir: path.join(__dirname, './uploads')
   }
 }))
+// 静态资源访问处理
+app.use(koaStatic(path.join(__dirname, './uploads')))
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))

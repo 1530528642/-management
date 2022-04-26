@@ -40,10 +40,12 @@ const getUser = async function (ctx, next) {
 //上传图片
 const copmeImg = async function (ctx, next) {
     // console.log(ctx.request.files.file)
+    console.log(ctx.request.files, '------------------')
     const {file} = ctx.request.files
+    // console.log(file, '++++++++++++++++++++++++')
     ctx.body = {
                 status: 200,
-                Filesl: path.basename(file.path)
+                Filesl: path.basename(file.filepath)
     }
 }
 // 查询分页
