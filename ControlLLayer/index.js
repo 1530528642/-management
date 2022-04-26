@@ -1,6 +1,7 @@
 // const { UserModel } = require("../db")
 // import jwt from "koa-jwt"
-// const JWT = require('koa-jwt')
+// const JWT = require('koa-jwt')\
+const {APP_PORT} = require("../config/configdis")
 const JWT = require('jsonwebtoken')
 const path = require('path')
 const { find, insertOne } = require("../cure")
@@ -20,6 +21,7 @@ const addUser = async function (ctx, next) {
 }
 // 登录
 const getUser = async function (ctx, next) {
+    // console.log(APP_PORT, '-----------------------')
     const resdata = await find(ctx.request.body, ctx, next)
     if (resdata.length > 0) {
         ctx.body = {
@@ -34,20 +36,18 @@ const getUser = async function (ctx, next) {
             data: []
         }
     }
-    
 }
-
+//上传图片
 const copmeImg = async function (ctx, next) {
     // console.log(ctx.request.files.file)
     const {file} = ctx.request.files
     ctx.body = {
                 status: 200,
-                Filesl: '登录成功6666'
+                Filesl: path.basename(file.path)
     }
 }
 // 查询分页
 const findpage = async function (ctx, next) {
-    // console.log(156461444156)
     ctx.body = {
                 status: 200,
                 msg: '登录成功1111',
@@ -67,7 +67,7 @@ const findpage = async function (ctx, next) {
     //         data: []
     //     }
     // }
-    
+
 }
 
 module.exports = {

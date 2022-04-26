@@ -1,19 +1,19 @@
 const fs = require('fs')
 const Router = require('koa-router')
-const router = new Router()
-fs.readdirSync(__dirname).forEach(item =>{
-  if (item !== 'index.js') {
-    path = require('./' + item)
-    router.use(path.routes(), path.allowedMethods())
+const router =new Router
+fs.readdirSync(__dirname).forEach(iters =>{
+  if (iters != 'index.js') {
+    const rs = require('./' + iters)
+    router.use(rs.routes(), rs.allowedMethods())
   }
 })
 // const router = require('koa-router')()
-// // const {UserModel} = require('../db')
+// const {UserModel} = require('../db')
 
-// // UserModel.create({name: '张三', password: 123456})
+// UserModel.create({name: '张三', password: 123456})
 // router.get('/', async (ctx, next) => {
 //   await ctx.render('index', {
-//     title: 'Hello Koa 2!'
+//     title: 'Hello Koa 236!'
 //   })
 // })
 
