@@ -4,7 +4,7 @@
 const {APP_PORT} = require("../config/configdis")
 const JWT = require('jsonwebtoken')
 const path = require('path')
-const { find, insertOne } = require("../cure")
+const { find, insertOne, menufind } = require("../cure")
 
 // 添加用户
 const addUser = async function (ctx, next) {
@@ -70,9 +70,20 @@ const findpage = async function (ctx, next) {
 
 }
 
+// 获取菜单
+const getmenu = async function (ctx, next) {
+    const resdata = await menufind(ctx.request.body, ctx, next)
+    ctx.body = {
+                status: 200,
+                msg: '登录成功1111',
+                data: resdata
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
     findpage,
-    copmeImg
+    copmeImg,
+    getmenu
 }

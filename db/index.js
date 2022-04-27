@@ -9,8 +9,37 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
+const MenuSchema = new mongoose.Schema({
+    Mid: {
+        type: String
+    },
+    name: {
+        type: String
+    },
+    parent_id: {
+        type: Number
+    },
+    sort: {
+        type: Number
+    },
+    url: {
+        type: String
+    },
+    icon: {
+        type: String
+    },
+    perms: {
+        type: Number
+    },
+    type: {
+        type: Number
+    }
+})
+
 const UserModel = mongoose.model('User', UserSchema, 'users')
+const MenuModel = mongoose.model('Menu', MenuSchema, 'menus')
 
 module.exports =  {
-    UserModel
+    UserModel,
+    MenuModel
 }

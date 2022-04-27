@@ -1,5 +1,6 @@
 const fs = require('fs')
 const Router = require('koa-router')
+const { MenuModel } = require("../db")
 const router =new Router
 fs.readdirSync(__dirname).forEach(iters =>{
   if (iters != 'index.js') {
@@ -7,6 +8,23 @@ fs.readdirSync(__dirname).forEach(iters =>{
     router.use(rs.routes(), rs.allowedMethods())
   }
 })
+
+
+// MenuModel.insertMany(
+//   [{
+//     Mid:'/manage',
+//     name: 'dooring工作台'
+//   },
+//   {
+//     Mid:'/manage/anazly',
+//     name: '数据大盘'
+//   },
+//   {
+//     Mid:'/manage/h5',
+//     name: 'H5服务中心'
+//   }]
+// )
+
 // const router = require('koa-router')()
 // const {UserModel} = require('../db')
 
