@@ -21,7 +21,6 @@ const addUser = async function (ctx, next) {
 }
 // 登录
 const getUser = async function (ctx, next) {
-    // console.log(APP_PORT, '-----------------------')
     const resdata = await find(ctx.request.body, ctx, next)
     if (resdata.length > 0) {
         ctx.body = {
@@ -39,8 +38,7 @@ const getUser = async function (ctx, next) {
 }
 //上传图片
 const copmeImg = async function (ctx, next) {
-    // console.log(ctx.request.files.file)
-    console.log(ctx.request.files, '------------------')
+    // console.log(ctx.request.files, '------------------')
     const {file} = ctx.request.files
     // console.log(file, '++++++++++++++++++++++++')
     ctx.body = {
