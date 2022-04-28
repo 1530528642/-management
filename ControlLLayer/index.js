@@ -70,13 +70,47 @@ const findpage = async function (ctx, next) {
 
 }
 
-// 获取菜单
+// 递归菜单 parent_id为父id mid为自身id 一级父id为0 子级parent_id为父级mid
 const getmenu = async function (ctx, next) {
     const resdata = await menufind(ctx.request.body, ctx, next)
+
+    let menudatas = []
+    function setItem(children, Mid) {
+        resdata.map((items) => {
+            if(items.parent_id === Mid) {
+                // console.log(items.parent_id, '-------------', Mid)
+                let scurt = {
+                    name: items.name,
+                    parent_id: items.parent_id,
+                    url: items.url,
+                    children: []
+                }
+                children.push(scurt)
+                setItem(scurt.children, items.Mid)
+            }
+        })
+    } 
+
+    function getParntNode() {
+        resdata.map((items) => {
+            if (items.Mid === 1 || items.Mid === 2 || items.Mid === 3) {
+                let scurtParnt = {
+                    name: items.name,
+                    parent_id: items.parent_id,
+                    url: items.url,
+                    children: []
+                }
+                setItem(scurtParnt.children, items.Mid)
+                menudatas.push(scurtParnt)
+            }
+        })
+    }
+    
+    getParntNode()
     ctx.body = {
                 status: 200,
                 msg: '登录成功1111',
-                data: resdata
+                data: menudatas
     }
 }
 

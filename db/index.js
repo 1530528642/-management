@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
 
 const MenuSchema = new mongoose.Schema({
     Mid: {
-        type: String
+        type: Number
     },
     name: {
         type: String

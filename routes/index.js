@@ -12,16 +12,46 @@ fs.readdirSync(__dirname).forEach(iters =>{
 
 // MenuModel.insertMany(
 //   [{
-//     Mid:'/manage',
-//     name: 'dooring工作台'
+//     Mid: 1,
+//     url: '/manage',
+//     name: 'dooring工作台',
+//     parent_id: 0
 //   },
 //   {
-//     Mid:'/manage/anazly',
-//     name: '数据大盘'
+//     Mid: 2,
+//     url: '/manage/anazly',
+//     name: '数据大盘',
+//     parent_id: 0
 //   },
 //   {
-//     Mid:'/manage/h5',
-//     name: 'H5服务中心'
+//     Mid: 3,
+//     url: '/manage/h5',
+//     name: 'H5服务中心',
+//     parent_id: 0
+//   },
+//   {
+//     Mid: 4,
+//     url: '/manage/h5',
+//     name: 'H5服务中心1',
+//     parent_id: 1
+//   },
+//   {
+//     Mid: 5,
+//     url: '/manage/h5',
+//     name: 'H5服务中心2',
+//     parent_id: 2
+//   },
+//   {
+//     Mid:6,
+//     url: '/manage/h5',
+//     name: 'H5服务中心3',
+//     parent_id: 3
+//   },
+//   {
+//     Mid: 7,
+//     url: '/manage/h5',
+//     name: 'H5服务中心4',
+//     parent_id: 6
 //   }]
 // )
 
